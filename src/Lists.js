@@ -71,23 +71,25 @@ class Lists extends PureComponent {
     };
     this.setState({ items: [...items, apples] });
   };
-  removeOranges = () => {
+  removeApples = () => {
     const { items } = this.state;
-    const newItems = items.filter(item => item.label !== "oranges");
+    const newItems = items.filter(item => item.label !== "apples");
     this.setState({ items: newItems });
   };
   render() {
     const { items, categories } = this.state;
     return (
-      <div className="flex">
-        <List items={items} />
-        <CategorizedList
-          items={items}
-          categories={categories}
-          catStrings={CATEGORY_STRINGS}
-        />
+      <div>
         <button onClick={this.addApples}>add apples</button>
-        <button onClick={this.removeOranges}>remove oranges</button>
+        <button onClick={this.removeApples}>remove apples</button>
+        <div className="flex">
+          <List items={items} />
+          <CategorizedList
+            items={items}
+            categories={categories}
+            catStrings={CATEGORY_STRINGS}
+          />
+        </div>
       </div>
     );
   }

@@ -1,5 +1,10 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
+
+const Item = styled.li`
+  color: #444;
+`;
 
 class CategorizedList extends PureComponent {
   render() {
@@ -11,9 +16,11 @@ class CategorizedList extends PureComponent {
               {this.props.catStrings[category]}
             </li>
             <ul>
-              {this.props.items.map(item =>
+              {this.props.items.map((item, index) =>
                 item.category === category ? (
-                  <li key={item.label}>{item.label}</li>
+                  <div key={item.label + index}>
+                    <Item>{item.label}</Item>
+                  </div>
                 ) : null
               )}
             </ul>
